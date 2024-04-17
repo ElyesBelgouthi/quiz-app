@@ -4,7 +4,7 @@ import "package:google_fonts/google_fonts.dart";
 class HomeScreen extends StatelessWidget {
   const HomeScreen(this.startQuiz, {super.key});
 
-  final void Function() startQuiz;
+  final void Function(String screen) startQuiz;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,9 @@ class HomeScreen extends StatelessWidget {
             height: 20,
           ),
           OutlinedButton.icon(
-            onPressed: startQuiz,
+            onPressed: () {
+              startQuiz("questions-screen");
+            },
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white70,
             ),

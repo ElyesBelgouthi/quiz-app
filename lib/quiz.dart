@@ -15,9 +15,10 @@ class _QuizState extends State<Quiz> {
   List<String> selectedAnswers = [];
   var activeScreen = "home-screen";
 
-  void switchScreen() {
+  void switchScreen(String screen) {
     setState(() {
-      activeScreen = "questions-screen";
+      activeScreen = screen;
+      if (screen == "home-screen") selectedAnswers = [];
     });
   }
 
@@ -41,7 +42,7 @@ class _QuizState extends State<Quiz> {
           child: activeScreen == "home-screen"
               ? HomeScreen(switchScreen)
               : activeScreen == "results-screen"
-                  ? ResultsScreen(selectedAnswers)
+                  ? ResultsScreen(switchScreen, selectedAnswers)
                   : QuestionsScreen(chooseAnswer),
         ),
       ),
